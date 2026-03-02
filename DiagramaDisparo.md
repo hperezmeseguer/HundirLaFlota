@@ -1,35 +1,25 @@
 ```mermaid
 sequenceDiagram;
 autonumber
-actor Usuario;
-participant Juego as :Juego;
-participant Tablero as :Tablero;
-participant Casilla as :Casilla;
-participant Nave as :Nave;
+    actor Usuario
+    participant Juego as :Juego
+    participant Tablero as :Tablero
+    participant Nave as :Nave
 
-    Usuario->>Juego: lanzar_ataque(x, y);
-    activate Juego;
+    Usuario->>Juego: lanzar_ataque(x, y)
+    activate Juego
     
-    Juego->>Tablero: gestionar_disparo(x, y);
-    activate Tablero;
+    Juego->>Tablero: comprobar_impacto(x, y)
+    activate Tablero
     
-    Tablero->>Casilla: recibir_impacto();
-    activate Casilla;
+    Tablero->>Nave: recibir_disparo()
+    activate Nave
+    Nave-->>Tablero: return estado (Tocado/Hundido)
+    deactivate Nave
     
-    alt hay_ocupante == True
-        Casilla->>Nave: restar_vida();
-        activate Nave;
-        Nave-->>Casilla: return estado (Tocado/Hundido);
-        deactivate Nave;
-        Casilla-->>Tablero: return estado;
-    else hay_ocupante == False
-        Casilla-->>Tablero: return "Agua";
-    end;
+    Tablero-->>Juego: return resultado
+    deactivate Tablero
     
-    deactivate Casilla;
-    Tablero-->>Juego: return resultado_final;
-    deactivate Tablero;
-    
-    Juego-->>Usuario: mostrar_mensaje(resultado);
-    deactivate Juego;
+    Juego-->>Usuario: mostrar_resultado(resultado)
+    deactivate Juego
 ```
