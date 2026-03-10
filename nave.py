@@ -1,12 +1,13 @@
 # Clase que representa una nave en el juego
 class Nave:
-    def __init__(self, nombre, tamano):
+    def __init__(self, nombre, tipo, vida):
         """
         Constructor de la clase Nave.
         
         Args:
-            nombre (str): Nombre del barco (Submarino, Buque, Portaaviones)
-            tamano (int): Tamaño de la nave (número de casillas que ocupa)
+            nombre (str): Nombre de la nave (string)
+            tipo (str): Nombre del barco (submarino, fragata, portaaviones)
+            vida (int): Tamaño de la nave (número de casillas que ocupa)
         """
         pass
 
