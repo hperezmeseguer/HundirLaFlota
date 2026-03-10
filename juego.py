@@ -15,7 +15,7 @@ class Juego:
         elif resultado == 1:
             print("Tocado")
         elif resultado == 2:
-            print("Hundido")
+            print("HundidO")
 
     def lanzar_ataque(self, x, y):
         print(f"Atacando {x}, {y}")
